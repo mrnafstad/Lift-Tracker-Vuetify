@@ -1,10 +1,9 @@
 <template>
   <v-app>
     <Header />
-    
     <Login />
 
-    <v-main>
+    <v-main style="padding: 15px 0px 0px;">
       <router-view />
     </v-main>
 
@@ -26,3 +25,9 @@ export default {
   }
 };
 </script>
+
+<style>
+element.style {
+  padding: 15px 0px 0px;
+}
+</style>

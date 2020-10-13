@@ -9,10 +9,12 @@ export default new Vuex.Store({
     todaysWorkout: [],
     exercises: [],
     currentExercise: null,
-    login: false
+    login: false,
+    advanced: false
   },
   mutations: {
-    login: (state) => state.login = !state.login,
+    login: (state) => (state.login = !state.login),
+    advanced: (state) => state.advanced = !state.advanced,
     setExercises: (state, exercises) => (state.exercises = exercises),
     newExercise: (state, exercise) => state.exercises.unshift(exercise),
     setCurrent: (state, exercise) => (state.currentExercise = exercise),
@@ -35,6 +37,7 @@ export default new Vuex.Store({
           sets: 1,
         });
       } else {
+        console.log(state.currentExecercise.Sets.length)
         let update = state.todaysWorkout.find(
           (element) => element.Name === set.Name
         );
@@ -49,7 +52,7 @@ export default new Vuex.Store({
   },
   actions: {
     toggleLogin({ commit }) {
-      commit('login')
+      commit("login");
     },
     async getExercises({ commit }) {
       await db.exercises.get().then(function(querySnapshot) {
@@ -70,20 +73,24 @@ export default new Vuex.Store({
       console.log(selection);
     },
     newSet({ commit }, set) {
+      console.log(set);
       commit("addSet", {
         weight: set.weight,
         reps: set.reps,
         rpe: set.rpe,
         type: set.type,
       });
-      console.log(set);
     },
+    toggleAdvanced({ commit }) {
+      commit("advanced")
+    }
   },
   getters: {
     currentLift: (state) => state.currentExercise,
     exercises: (state) => state.exercises,
     getToday: (state) => state.todaysWorkout,
-    login: (state) => state.login
+    login: (state) => state.login,
+    advanced: (state) => state.advanced
   },
   // state: {
   //   login: false

@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-footer padless fixed class="font-weight-small">
+    <v-footer padless relative class="font-weight-small">
       <v-col class="text-center" cols="6">
         Created by:
         <p>Halvor Nafstad</p>

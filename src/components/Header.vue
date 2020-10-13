@@ -23,6 +23,9 @@
         >
           <v-list-item-title :to="route.path">{{ route.name }}</v-list-item-title>
         </v-list-item>
+        <v-list-item>
+          <v-switch @click="toggleAdvanced" label='Advanced'></v-switch>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </v-container>
@@ -39,7 +42,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['toggleLogin']),
+    ...mapActions(['toggleLogin', 'toggleAdvanced']),
   }
 };
 </script>
